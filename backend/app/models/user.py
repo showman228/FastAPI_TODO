@@ -13,7 +13,7 @@ class User(Base):
     created_at = Column(DateTime(timezone=True), default=datetime.now(UTC))
     priority_of_tasks = Column(Integer, nullable=True)
 
-    tasks = relationship("Tasks", back_populates="tasks")
+    task = relationship("Tasks", back_populates="users")
 
     def __repr__(self):
         return f"<User(id={self.id}, username={self.username}, email={self.email})>"
