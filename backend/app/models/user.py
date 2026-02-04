@@ -14,7 +14,7 @@ class User(Base):
     lastname = Column(String, nullable=True)
     created_at = Column(DateTime(timezone=True), default=datetime.now(UTC))
 
-    tasks = relationship("Task", back_populates="users")
+    tasks = relationship("Task", back_populates="user")
 
     def __repr__(self):
         return f"<User(id={self.id}, username={self.username}, email={self.email})>"

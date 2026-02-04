@@ -12,7 +12,7 @@ class Task(Base):
     created_at = Column(DateTime(timezone=True), default=datetime.now(UTC))
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
-    users = relationship("User", back_populates="tasks")
+    user = relationship("User", back_populates="tasks")
 
     def __repr__(self):
         return f"<Task(id={self.id}, name={self.name}, description={self.description}, created_at={self.created_at})>"
