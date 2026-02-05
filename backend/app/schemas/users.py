@@ -16,6 +16,6 @@ class UserResponse(UserBase):
     firstname: str | None = Field(None, description="Firstname") # str | None вместо default="None" для опциональных полей
     lastname: str | None = Field(None, description="Lastname") # str | None вместо default="None" для опциональных полей
     created_at: datetime = Field(..., description="Creation timestamp")
-
+    
     class Config:
         from_attributes = True # без этого Pydantic не сможет преобразовать SQLAlchemy модели в схемы
