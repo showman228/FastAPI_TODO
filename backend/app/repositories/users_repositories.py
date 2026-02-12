@@ -28,7 +28,7 @@ class UserRepository:
         self.db.refresh(db_user)
         return db_user
 
-    def update(self, user: User) -> Optional[User]:
+    def update(self, user: UserCreate) -> Optional[User]:
         db_user = self.get_by_id(user.id)
         if not db_user:
             return None
@@ -42,8 +42,8 @@ class UserRepository:
         self.db.refresh(db_user)
         return db_user
 
-    def delete(self, user: User) -> bool:
-        db_user = self.get_by_id(user.id)
+    def delete(self, user_id: int) -> bool:
+        db_user = self.get_by_id(user_id)
 
         if not db_user:
             return False

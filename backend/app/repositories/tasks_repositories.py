@@ -21,7 +21,7 @@ class TaskRepository():
         db_task = Task(
             name=task.name,
             description=task.description,
-            user_id=user_id,
+            user_id=user_id
         )
         self.db.add(db_task)
         self.db.commit()
