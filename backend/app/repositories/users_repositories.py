@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from typing import List, Optional
 from backend.app.models.user import User
-from backend.app.schemas.users import UserCreate
+from backend.app.schemas.users import UserCreate, UserUpdate
 from pydantic import EmailStr
 
 class UserRepository:
@@ -28,8 +28,8 @@ class UserRepository:
         self.db.refresh(db_user)
         return db_user
 
-    def update(self, user: UserCreate) -> Optional[User]:
-        db_user = self.get_by_id(user.id)
+    def update(self, user: UserUpdate, user_id: int) -> Optional[User]:
+        db_user = self.get_by_id(user_id)
         if not db_user:
             return None
 

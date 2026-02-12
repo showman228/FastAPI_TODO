@@ -5,11 +5,13 @@ class UserBase(BaseModel):
     username: str = Field(..., min_length=5, max_length=25, description="Username")
 
 class UserCreate(UserBase):
-    id: int = Field(..., description="User id")
     email: EmailStr = Field(..., description="Email address")
     firstname: str = Field(..., max_length=20, description="Firstname")
     lastname: str = Field(..., max_length=20, description="Lastname")
     password: str = Field(..., min_length=8, max_length=20, description="Password")
+
+class UserUpdate(UserCreate):
+    username: str = Field(..., min_length=5, max_length=25, description="Username")
 
 class UserResponse(UserBase):
     id: int = Field(..., description="User id")
