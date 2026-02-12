@@ -6,7 +6,7 @@ class TaskBase(BaseModel):
     description: str = Field(default="None", description="Task description", max_length=300)
 
 class TaskCreate(TaskBase):
-    pass
+    user_id: int = Field(..., description="User id who created task")
 
 class TaskResponse(TaskBase):
     id: int = Field(..., description="Task id")
