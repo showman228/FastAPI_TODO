@@ -15,7 +15,7 @@ def get_users(db: Session = Depends(get_db)):
     service = UserService(db)
     return service.get_all_users()
 
-@router.get("/{user_id", response_model=UserResponse, status_code=status.HTTP_200_OK)
+@router.get("/{user_id}", response_model=UserResponse, status_code=status.HTTP_200_OK)
 def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
     service = UserService(db)
     return service.get_user_by_id(user_id)
