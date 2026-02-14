@@ -28,15 +28,14 @@ class UserRepository:
         self.db.refresh(db_user)
         return db_user
 
-    def update(self, user: UserUpdate, user_id: int) -> Optional[User]:
+    def update(self, user_data: UserUpdate, user_id: int) -> Optional[User]:
         db_user = self.get_by_id(user_id)
         if not db_user:
             return None
 
-        user.firstname = db_user.firstname
-        user.lastname = db_user.lastname
-        user.email = db_user.email
-        user.username = db_user.username
+        update_data = user_data.model_dump(exclude_unset=True)
+        for field, value in update_data.items():
+            setattr(db_user, field, value)
 
         self.db.commit()
         self.db.refresh(db_user)
