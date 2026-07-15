@@ -1,4 +1,4 @@
-from backend.app.models.tasks import Task
-from backend.app.models.user import User
+from .tasks import Task
+from .user import User
 
 __all__ = ["User", "Task"]

@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List
-from backend.app.schemas.tasks import TaskResponse, TaskCreate
-from backend.app.services.tasks import TaskService
-from backend.app.database import get_db
+from ..schemas.tasks import TaskResponse, TaskCreate
+from ..services.tasks import TaskService
+from ..database import get_db
 
 
 router = APIRouter(

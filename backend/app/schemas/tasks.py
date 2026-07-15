@@ -2,7 +2,7 @@ from pydantic import BaseModel, Field
 from datetime import datetime
 
 class TaskBase(BaseModel):
-    name: str = Field(..., min_length=5, max_length=100, description="Task name")
+    name: str = Field(..., max_length=100, description="Task name")
     description: str = Field(default="None", description="Task description", max_length=300)
 
 class TaskCreate(TaskBase):

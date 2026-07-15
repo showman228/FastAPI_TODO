@@ -1,8 +1,8 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from typing import List, Optional
-from backend.app.models.tasks import Task
-from backend.app.schemas.tasks import TaskCreate
+from ..models.tasks import Task
+from ..schemas.tasks import TaskCreate
 
 
 class TaskRepository():

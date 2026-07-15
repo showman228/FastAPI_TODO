@@ -1,8 +1,8 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from typing import List, Optional
-from backend.app.models.user import User
-from backend.app.schemas.users import UserCreate, UserUpdate
+from ..models.user import User
+from ..schemas.users import UserCreate, UserUpdate
 from pydantic import EmailStr
 
 

@@ -11,7 +11,6 @@ class Settings(BaseSettings):
 
     app_name: str = "FastAPI TODO"
     debug: bool = True
-    database_url: str = "sqlite:///./todo.db"
     cors_origins: Union[List[str], str] = [
         "http://localhost:5173",
         "http://localhost:3000",
@@ -23,9 +22,9 @@ class Settings(BaseSettings):
 
     @property
     def get_url(self):
-        return f"postgresql+psycopg://{self.DB_USER}:{self.DB_PASS}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
+        return f"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
 
-    model_config = SettingsConfigDict(env_file=Path(__file__).parent / ".env")
+    model_config = SettingsConfigDict(env_file=Path(__file__).parent.parent / ".env", extra="ignore")
 
 
 settings = Settings()
