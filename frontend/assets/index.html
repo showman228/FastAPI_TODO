@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Заметки — вход</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="brand">
+      <div class="logo-mark"></div>
+      <span class="brand-name">Заметки</span>
+    </div>
+
+    <p class="auth-subtitle">Все ваши заметки — в одном месте</p>
+
+    <!-- Переключатель Вход/Регистрация реализован через radio + CSS,
+         никакого JS: #mode-login и #mode-register управляют и подсветкой
+         вкладки, и видимостью соответствующей формы ниже. -->
+    <input type="radio" name="mode" id="mode-login" class="toggle-input" checked>
+    <input type="radio" name="mode" id="mode-register" class="toggle-input">
+
+    <div class="segmented">
+      <label for="mode-login">Вход</label>
+      <label for="mode-register">Регистрация</label>
+    </div>
+
+    <div class="panels">
+
+      <!-- ---------- Форма входа ---------- -->
+      <form id="login-form" class="auth-panel panel-login" novalidate>
+        <p class="form-error" id="login-error"></p>
+
+        <div class="field">
+          <label for="login-email">Почта</label>
+          <input type="email" id="login-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label for="login-password">Пароль</label>
+          <input type="password" id="login-password" name="password" placeholder="••••••••" autocomplete="current-password" required>
+        </div>
+
+        <button type="submit" class="btn-primary">Войти</button>
+      </form>
+
+      <!-- ---------- Форма регистрации ---------- -->
+      <form id="register-form" class="auth-panel panel-register" novalidate>
+        <p class="form-error" id="register-error"></p>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="reg-firstname">Имя</label>
+            <input type="text" id="reg-firstname" name="first_name" placeholder="Алексей" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="reg-lastname">Фамилия</label>
+            <input type="text" id="reg-lastname" name="last_name" placeholder="Иванов" autocomplete="family-name" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="reg-username">Имя пользователя</label>
+          <input type="text" id="reg-username" name="username" placeholder="alexivanov" maxlength="25" autocomplete="username" required>
+        </div>
+
+        <div class="field">
+          <label for="reg-email">Почта</label>
+          <input type="email" id="reg-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label for="reg-password">Пароль</label>
+          <input type="password" id="reg-password" name="password" placeholder="Минимум 8 символов" autocomplete="new-password" maxlength="20" required>
+        </div>
+
+        <button type="submit" class="btn-primary">Создать аккаунт</button>
+      </form>
+
+    </div>
+
+    <p class="auth-fineprint">Продолжая, вы соглашаетесь с условиями использования</p>
+  </div>
+</div>
+
+<script type="module" src="js/auth.js"></script>
+</body>
+</html>

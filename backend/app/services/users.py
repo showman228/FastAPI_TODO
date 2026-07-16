@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List
 from ..repositories.users_repositories import UserRepository
-from ..schemas.users import UserResponse, UserCreate, UserUpdate
+from ..schemas.users import UserResponse, UserCreate, UserUpdate, UserLogin
 from fastapi import HTTPException, status
 
 
@@ -28,6 +28,15 @@ class UserService:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail=f"User with email {user_data.email} not found",
+            )
+        return UserResponse.model_validate(user)
+    
+    async def login(self, user_data: UserLogin) -> UserResponse:
+        user = await self.user_repository.get_by_email(user_data.email)
+        if user is None or user.password != user_data.password:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid email or password",
             )
         return UserResponse.model_validate(user)
 

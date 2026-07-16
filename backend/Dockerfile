@@ -13,6 +13,7 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry install --no-root --only main
 
 COPY backend ./backend
+COPY frontend ./frontend
 
 WORKDIR /code/backend
 

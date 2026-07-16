@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List
 from ..database import get_db
-from ..schemas.users import UserResponse, UserCreate, UserUpdate
+from ..schemas.users import UserResponse, UserCreate, UserUpdate, UserLogin
 from ..services.users import UserService
 
 
@@ -20,6 +20,11 @@ async def get_users(db: AsyncSession = Depends(get_db)):
 async def get_user_by_id(user_id: int, db: AsyncSession = Depends(get_db)):
     service = UserService(db)
     return await service.get_user_by_id(user_id)
+
+@router.post("/login", response_model=UserResponse, status_code=status.HTTP_200_OK)
+async def login(credentials: UserLogin, db: AsyncSession = Depends(get_db)):
+    service = UserService(db)
+    return await service.login(credentials)
 
 @router.post("", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 async def create_user(user_data: UserCreate, db: AsyncSession = Depends(get_db)):
